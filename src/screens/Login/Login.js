@@ -72,11 +72,10 @@ const Login = ({ props }) => {
     }
   }, [navigate, userInfo]);
   return (
-    // <div className="pagecenter loginForm">
-    <>
+    <div className=" loginForm">
       <form>
         <div className="row">
-          <div className="col-sm-3"></div>
+          <div className="col-sm-2"></div>
           <label htmlFor="email" className="col-sm-2 col-form-label">
             Email:
           </label>
@@ -95,7 +94,7 @@ const Login = ({ props }) => {
           <div className="col-sm-4"></div>
         </div>
         <div className="row">
-          <div className="col-sm-3"></div>
+          <div className="col-sm-2"></div>
           <label htmlFor="password" className="col-sm-2 col-form-label">
             Password:
           </label>
@@ -116,27 +115,20 @@ const Login = ({ props }) => {
           </div>
           <div className="col-sm-4"></div>
         </div>
-        {/* <div className="row">
-            <div className="col-sm-12 center mt-1">
-              { submitted && loginStatus.length > 0 &&  <span className='error'>{loginStatus}</span>}
-            </div>
-          </div> */}
         <div className="row">
-          <div className="col-sm-12 center mt-2">
+        <div className="col-sm-2 mt-2"></div>
+        <div className="col-sm-3">
+            <a href="/register">Register</a>
+          </div>
+          <div className="col-sm-3 center mt-4 center">
             <button type="submit" className="button" onClick={loginForm}>
               Login
             </button>
           </div>
-        </div>
-        <div className="row">
-          <div className="col-sm-4 mt-2"></div>
-          <div className="col-sm-4 right">
-            <a href="/register">Register</a>
-          </div>
           <div className="col-sm-4 mt-2"></div>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 export default Login;

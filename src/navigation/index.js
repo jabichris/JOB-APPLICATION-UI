@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from '../screens/Login';
-class Navigation extends Component {
-  render() {
+import Register from '../screens/Register';
+import Home from '../screens/Home';
+import Application from '../screens/Application';
+
+const Navigation = () => {
     return (
       <Router>
         <Routes>
           <Route exact path="/" element={<Login />} />
-          {/* <Route path="/register" component={Register} /> */}
-          {/* <AuthenticatedRoute exact path='/home' component={Home} /> */}
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path='/home' element={<Home />} />
+          <Route exact path='/application' element={<Application/>}/>
         </Routes>
       </Router>
     );
-  }
 }
 
 export default Navigation;

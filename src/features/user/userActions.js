@@ -27,9 +27,10 @@ export const registerUser = createAsyncThunk('user/register', async ({ firstName
         'Content-Type': 'applications/json',
       },
     };
-
-    await axios.post('api/v1/user/login', { firstName, lastName, email, password }, config);
-  } catch (error) {
+    const {data} = await axios.post('api/v1/user/register', { firstName, lastName, email, password }, config);
+    localStorage.setItem('userToken', data.data.token);
+    return data.data;  
+} catch (error) {
     console.log(error);
   }
 });

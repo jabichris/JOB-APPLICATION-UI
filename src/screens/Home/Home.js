@@ -1,30 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-// import { ProfileImage, Divider, UserDetails, Welcome } from '../../components';
+import React from 'react';
+import { Welcome } from '../../components';
+import { useSelector } from 'react-redux';
 
-export class Home extends Component {
-  render() {
-    console.log('this.props.profile',this.props.profile)
-
-    return (
+const Home = ()=>{
+ return (
       <div className="row">
-        {/* <ProfileImage /> */}
-        {/* <Divider /> */}
         <div className="rightPanel">
-          {/* <Welcome user={this.props.profile} /> */}
-          {/* <UserDetails user={this.props.profile} /> */}
+          <Welcome />
         </div>
       </div>
     )
-  }
 }
 
-const mapStateToProps = (state) => {
-    console.log('state::::',state)
-
-  return {
-    profile: state.profile
-  }
-}
-
-export default connect(mapStateToProps)(Home);
+export default Home;
