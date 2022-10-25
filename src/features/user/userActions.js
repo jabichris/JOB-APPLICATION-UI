@@ -1,39 +1,38 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios  from "axios"
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-axios.defaults.baseURL = "https://jobapplication.fly.dev/"
+axios.defaults.baseURL = 'https://jobapplication.fly.dev/';
 
-export const userLogin = createAsyncThunk("user/login", async({email,password}) => {
-    try {
-        const config = {
-            headers :{
-                "Content-Type":"applications/json"
-            }
-        }
+export const userLogin = createAsyncThunk('user/login', async ({ email, password }) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
 
-        const {data} = await axios.post('api/v1/user/login', {email,password}, config)
+    const { data } = await axios.post('api/v1/user/login', { email, password }, config);
 
-        localStorage.setItem('userToken', data.token)
-        return data
-    } catch (error) {
-        console.log(error)
-    }
-})
+    localStorage.setItem('userToken', data.data.token);
+    return data.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
+export const registerUser = createAsyncThunk('user/register', async ({ firstName, lastName, email, password }) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'applications/json',
+      },
+    };
 
-export const registerUser = createAsyncThunk("user/register", async({firstName, lastName,email,password}) => {
-    try {
-        const config = {
-            headers :{
-                "Content-Type":"applications/json"
-            }
-        }
-
-        await axios.post('api/v1/user/login', {firstName, lastName,email,password}, config)
-    } catch (error) {
-        console.log(error)
-    }
-})
+    await axios.post('api/v1/user/login', { firstName, lastName, email, password }, config);
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // export const getUserDetails = createAsyncThunk("user/getUserDetails", async(arg, {getState, rejectWithValue}) => {
 //     try {
