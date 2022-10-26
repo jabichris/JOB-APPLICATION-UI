@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
@@ -47,7 +47,9 @@ const Register = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const { loading, userInfo, error } = useSelector((state) => state.user);
+  const { loading, userInfo, error } = useSelector((state) => {
+    console.log(">>>>>>>",state)
+    return state.user});
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -62,17 +64,10 @@ const Register = () => {
         email,
         password,
       }));
-      // toast('success', {
-      //   position: "top-right",
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "light",
-      //   })
+      toast('Registration Success')
+      // navigate('/home');
     } else {
+      toast('Registration Failed')
       console.log('Invalid Form')
     }
   }
@@ -84,9 +79,14 @@ const Register = () => {
     errors.user.password = ''
     this.setState({ errors });
   }
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/home');
+    }
+  }, [navigate, userInfo]);
   return (
     <div className="rightPanel">
-      {/* <ToastContainer/> */}
+      <ToastContainer/>
       <div className="row">
         <div className="col-sm-1">
         </div>

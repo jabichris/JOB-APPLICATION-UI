@@ -24,14 +24,17 @@ export const registerUser = createAsyncThunk('user/register', async ({ firstName
     try {
         const config = {
             headers: {
-                'Content-Type': 'applications/json',
+                'Content-Type': 'application/json',
             },
         };
-        const { data } = await axios.post('api/v1/user/register', { firstName, lastName, email, password }, config);
+        console.log("data>>>><<<<",firstName, lastName, email, password )
+        const  {data} = await axios.post('api/v1/user/register', { firstName, lastName, email, password }, config);
+        console.log("data>>>><<<<",data)
         localStorage.setItem('userToken', data.data.token);
         return data.data;
     } catch (error) {
-        console.log(error);
+        console.log(error.response.data.errors);
+        return error.response.data.errors
     }
 });
 

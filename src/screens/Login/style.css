@@ -1,4 +1,14 @@
 .loginForm {
     width: 100%;
-    margin-top: 8rem;
+  }
+  .rightPanel {
+    padding: 20px;
+    margin: 10px;
+    float: right;
+    width: 100%;
+    overflow: auto;
+    margin-bottom: 45px;
+  }
+  .col-form-label {
+    text-align: right;
   }

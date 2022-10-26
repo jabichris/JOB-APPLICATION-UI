@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 
 const Navigation = () => {
   const { loading, userToken, error } = useSelector((state) => state.user);
-  console.log("userToken::::::::",typeof userToken)
+  console.log("userToken::::::::", userToken)
     return (
       <Router>
         <Routes>

@@ -2,8 +2,7 @@
     padding: 20px;
     margin: 10px;
     float: right;
-    width: 75%;
-    /* height: 90vh; */
+    width: 100%;
     overflow: auto;
     margin-bottom: 45px;
   }

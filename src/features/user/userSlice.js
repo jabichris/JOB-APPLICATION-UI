@@ -35,7 +35,7 @@ const userSlice = createSlice({
     },
     [userLogin.rejected]: (state, { payload }) => {
       state.loading = false;
-      state.error = null;
+      state.error = payload;
     },
     [registerUser.pending]: (state, { payload }) => {
       state.loading = true;
@@ -44,10 +44,14 @@ const userSlice = createSlice({
     [registerUser.fulfilled]: (state, { payload }) => {
       state.loading = false;
       state.success = true;
+      state.userInfo = payload;
+      state.userToken = payload.token;
     },
     [registerUser.rejected]: (state, { payload }) => {
       state.loading = false;
       state.error = payload;
+      state.userInfo = payload;
+      state.userToken = payload;
     },
   },
 });

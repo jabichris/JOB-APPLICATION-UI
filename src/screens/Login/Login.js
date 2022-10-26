@@ -75,7 +75,7 @@ const Login = ({ props }) => {
     }
   }, [navigate, userInfo]);
   return (
-    <div className=" loginForm">
+    <div className="rightPanel loginForm">
       <form>
         <div className="row">
           <div className="col-sm-2"></div>
@@ -119,8 +119,8 @@ const Login = ({ props }) => {
           <div className="col-sm-4"></div>
         </div>
         <div className="row">
-        <div className="col-sm-2 mt-2"></div>
-        <div className="col-sm-3">
+          <div className="col-sm-3 mt-2"></div>
+          <div className="col-sm-3 mt-4">
             <a href="/register">Register</a>
           </div>
           <div className="col-sm-3 center mt-4 center">
@@ -128,7 +128,7 @@ const Login = ({ props }) => {
               Login
             </button>
           </div>
-          <div className="col-sm-4 mt-2"></div>
+          <div className="col-sm-3 mt-2"></div>
         </div>
       </form>
       <ToastContainer />
