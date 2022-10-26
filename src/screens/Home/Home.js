@@ -1,12 +1,13 @@
 import React from 'react';
 import { Welcome } from '../../components';
 import { useSelector } from 'react-redux';
+import Login from '../Login';
 
-const Home = ()=>{
+const Home = (userToken)=>{
  return (
       <div className="row">
         <div className="rightPanel">
-          <Welcome />
+        {userToken.userToken?<Welcome />:<Login/>}
         </div>
       </div>
     )
