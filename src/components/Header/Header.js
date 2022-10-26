@@ -4,9 +4,9 @@ import './style.css';
 export class Header extends Component {
   render() {
     return (
-      <header>User - {(window.location.pathname==='/register')?'Registration':
-      (window.location.pathname==='/login')?'Login':
-      (window.location.pathname==='/home')?'Home':null}</header>
+      <header>
+        <a href="/login" class="logo">HireTalent</a>
+      </header>
     )
   }
 }

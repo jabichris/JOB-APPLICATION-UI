@@ -48,7 +48,6 @@ const Welcome = () => {
                     </thead>
                     <tbody>
                         {applicationInfo?.map((item, index) => {
-                            console.log("ITEM::::",item)
                             return (<>
                                 <tr>
                                     <th scope="row">{index+1}</th>

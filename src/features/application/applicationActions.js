@@ -30,7 +30,6 @@ export const userApply = createAsyncThunk('user/apply', async ({
             summary,
             resume
         }, config);
-        console.log('data::::', data)
         // localStorage.setItem('userToken', data.data.token);
         return data.data;
     } catch (error) {
@@ -55,7 +54,6 @@ export const userApply = createAsyncThunk('user/apply', async ({
 export const getApplications = createAsyncThunk("user/getUserApplications", async (arg, { getState, rejectWithValue }) => {
     try {
         const { user } = getState()
-        console.log('USER::::', user)
         const config = {
             headers: {
                 "Authorization": `Bearer ${user.userToken}`

@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import './style.css';
 import { userLogin } from '../../features/user/userActions';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = ({ props }) => {
   const [email, setEmail] = useState('');
@@ -128,6 +131,7 @@ const Login = ({ props }) => {
           <div className="col-sm-4 mt-2"></div>
         </div>
       </form>
+      <ToastContainer />
     </div>
   );
 };

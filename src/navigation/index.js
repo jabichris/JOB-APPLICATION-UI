@@ -9,10 +9,11 @@ const Navigation = () => {
     return (
       <Router>
         <Routes>
-          <Route exact path="/" element={<Login />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path='/home' element={<Home />} />
           <Route exact path='/application' element={<Application/>}/>
+          <Route exact path='/*' element={<Application/>}/>
         </Routes>
       </Router>
     );

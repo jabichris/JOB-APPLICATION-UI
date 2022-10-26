@@ -29,7 +29,9 @@ const ApplicationForm = () => {
         resume: ''
     })
     const [submitted, setSubmitted] = useState(false);
-    const { loading, applicationInfo, error } = useSelector((state) => state.application);
+    const { loading, applicationInfo, error } = useSelector((state) => {
+        return state.application
+    });
     const dispatch = useDispatch();
     const navigate = useNavigate();
     //         errors: {
@@ -48,16 +50,6 @@ const ApplicationForm = () => {
     //         submitted: false
     //     }
     // }
-
-    // componentDidMount() {
-    //     if (this.props.profile) {
-    //         this.setState({ user: this.props.profile });
-    //         if (this.props.profile.email) {
-    //             this.resetErrorMsg();
-    //         }
-    //     }
-    // }
-    // useEffect
 
     const validationErrorMessage = (event) => {
         const { name, value } = event.target;
@@ -115,9 +107,11 @@ const ApplicationForm = () => {
                     resume
                 })
             );
-            // toast('Success')
+            console.info('Valid Form',applicationInfo)
+            toast('Success')
             // this.props.history.push('/home')
         } else {
+            toast('Failed')
             console.log('Invalid Form')
         }
     }
@@ -132,10 +126,10 @@ const ApplicationForm = () => {
     // }
     // const { firstName, lastName, email, address, experience, education, summary, resume } = this.state.user;
     // const { submitted } = this.state;
-    const displayName = jwt(window.localStorage.getItem('userToken')).firstName
+    // const displayName = jwt(window.localStorage.getItem('userToken')).firstName
     return (
         <>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
         <div className="rightPanel">
                 <div className="row">
                     <div className="col-sm-1">
