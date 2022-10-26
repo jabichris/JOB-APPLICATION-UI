@@ -121,7 +121,9 @@ const Login = ({ props }) => {
         <div className="row">
           <div className="col-sm-3 mt-2"></div>
           <div className="col-sm-3 mt-4">
-            <a href="/register">Register</a>
+            <a href="/register" className='ml-2'>Register</a>
+            <b> or </b>
+            <a href="/application">apply to a job</a>
           </div>
           <div className="col-sm-3 center mt-4 center">
             <button type="submit" className="button" onClick={loginForm}>

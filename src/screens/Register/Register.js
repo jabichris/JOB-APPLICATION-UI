@@ -126,7 +126,9 @@ const Register = () => {
         <div className="col-sm-3 mb-2">
         </div>
         <div className='col-sm-2'>
-          <a href="/home">Login</a>
+          <a href="/home" className='ml-2'>Login</a>
+          <b> or </b>
+            <a href="/application">apply to a job</a>
         </div>
         <div className="col-sm-4">
           <button type="button" className="button" onClick={submitForm}>Submit</button>
