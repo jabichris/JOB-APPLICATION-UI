@@ -48,7 +48,6 @@ const Register = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const { loading, userInfo, error } = useSelector((state) => {
-    console.log(">>>>>>>",state)
     return state.user});
   const dispatch = useDispatch();
   const navigate = useNavigate();
