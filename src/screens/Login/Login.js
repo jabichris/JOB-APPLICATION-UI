@@ -22,12 +22,8 @@ const Login = ({ props }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const inputChange = (event) => {
-    const { name, value } = event.target;
-    validationErrorMessage(event);
-  };
-
   const validationErrorMessage = (event) => {
+    console.log('event::::',event.target)
     const { name, value } = event.target;
     switch (name) {
       case 'email':
@@ -45,20 +41,19 @@ const Login = ({ props }) => {
 
   const validateForm = (errors) => {
     let valid = true;
-    console.log(errors);
-    Object.entries(errors).forEach((item) => {
-      console.log(item);
-      item && item[1].length > 0 && (valid = false);
-    });
-    console.log(valid);
+    Object.entries(errors).forEach((item) =>  {
+      if(item && item[1].length > 0 ){
+      valid=false
+    }})
+
     return valid;
   };
 
   const loginForm = async (event) => {
+    // validationErrorMessage(event);
     setSubmitted(true);
     event.preventDefault();
     if (validateForm(errorMessage)) {
-      console.log(email, password);
       dispatch(
         userLogin({
           email,
@@ -66,7 +61,10 @@ const Login = ({ props }) => {
         })
       );
     } else {
-      console.log('Invalid Form');
+      const emailError = email.length < 1 ? 'Enter Your Email' : '';
+      setErrorMessage({ email: emailError });
+      console.log('errorMessage:::',errorMessage);
+      // validationErrorMessage(event)
     }
   };
   useEffect(() => {
@@ -92,7 +90,7 @@ const Login = ({ props }) => {
               id="email"
               placeholder="Email"
             />
-            {submitted && errorMessage.email.length > 0 && <span className="error">{errorMessage.email}</span>}
+            {submitted && email.length == 0 && <span className="error">Enter Your Email</span>}
           </div>
           <div className="col-sm-4"></div>
         </div>
@@ -114,7 +112,7 @@ const Login = ({ props }) => {
               id="password"
               placeholder="Password"
             />
-            {submitted && errorMessage.password.length > 0 && <span className="error">{errorMessage.password}</span>}
+            {submitted && password.length == 0 && <span className="error">Enter Password</span>}
           </div>
           <div className="col-sm-4"></div>
         </div>

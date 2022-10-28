@@ -26,7 +26,7 @@ const Register = () => {
         errors.user.firstName = value.length < 1 ? 'Enter First Name' : '';
         break;
       case 'password':
-        errors.user.password = value.length < 1 && value.length > 10 ? 'Enter valid password number' : '';
+        errors.user.password = value.length < 1 && value.length > 10 ? 'Enter valid password' : '';
         break;
       default:
         break;
@@ -56,7 +56,7 @@ const Register = () => {
     setSubmitted(true);
     event.preventDefault();
     if (validateForm(errorMessage)) {
-      // console.info('Valid Form')
+      console.info('Valid Form')
       dispatch(registerUser({
         firstName,
         lastName,
@@ -66,23 +66,17 @@ const Register = () => {
       toast('Registration Success')
       // navigate('/home');
     } else {
+      setErrorMessage({ email: 'failed' });
       toast('Registration Failed')
       console.log('Invalid Form')
     }
   }
 
- const resetErrorMsg = () => {
-    let errors = this.state.errors;
-    errors.user.firstName = ''
-    errors.user.email = ''
-    errors.user.password = ''
-    this.setState({ errors });
-  }
-  useEffect(() => {
-    if (userInfo) {
-      navigate('/home');
-    }
-  }, [navigate, userInfo]);
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     navigate('/home');
+  //   }
+  // }, [navigate, userInfo]);
   return (
     <div className="rightPanel">
       <ToastContainer/>
@@ -92,7 +86,7 @@ const Register = () => {
         <label className="col-sm-2 col-form-label">Name</label>
         <div className="col-sm-3 mb-2">
           <input type="text" value={firstName} name="firstName" onChange={(e) => { setFirstName(e.target.value) }} className="form-control" placeholder="First Name" />
-          {submitted && errorMessage.firstName.length > 0 && <span className='error'>{errorMessage.firstName}</span>}
+          {submitted && errorMessage.firstName.length > 0 && <span className='error'>Enter First Name</span>}
         </div>
         <div className="col-sm-3 mb-2">
           <input type="text" value={lastName} name="lastName" onChange={(e) => { setLastName(e.target.value) }} className="form-control" placeholder="Last Name" />
@@ -106,7 +100,7 @@ const Register = () => {
         <label htmlFor="email" className="col-sm-2 col-form-label">Email</label>
         <div className="col-sm-6 mb-2">
           <input type="email" value={email} name="email" onChange={(e) => { setEmail(e.target.value) }} className="form-control" id="email" placeholder="anyone@email.com" />
-          {submitted && errorMessage.email.length > 0 && <span className='error'>{errorMessage.email}</span>}
+          {submitted && email.length == 0 && <span className='error'>Enter valid email</span>}
         </div>
         <div className="col-sm-3">
         </div>
@@ -117,7 +111,7 @@ const Register = () => {
         <label htmlFor="password" className="col-sm-2 col-form-label">Password</label>
         <div className="col-sm-6 mb-2">
           <input type="password" value={password} name="password" onChange={(e) => { setPassword(e.target.value) }} className="form-control" id="password" placeholder="*********" />
-          {submitted && errorMessage.password.length > 0 && <span className='error'>{errorMessage.password}</span>}
+          {submitted && password.length == 0 && <span className='error'>Enter password</span>}
         </div>
         <div className="col-sm-3">
         </div>
