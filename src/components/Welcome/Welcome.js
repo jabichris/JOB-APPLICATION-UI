@@ -7,6 +7,7 @@ import { getApplications } from '../../features/application/applicationActions';
 
 const Welcome = () => {
     const { loading, applicationInfo, error } = useSelector((state) => state.application);
+    // console.log('application::::', )
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -46,7 +47,7 @@ const Welcome = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {applicationInfo?.map((item, index) => {
+                        {[...applicationInfo]?.reverse().map((item, index) => {
                             return (<>
                                 <tr>
                                     <th scope="row">{index+1}</th>

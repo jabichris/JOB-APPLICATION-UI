@@ -47,7 +47,7 @@ export const getApplications = createAsyncThunk("user/getUserApplications", asyn
             }
         }
 
-        const { data } = await axios.get('api/v1/job-application?page=1&limit=5', config)
+        const { data } = await axios.get('api/v1/job-application?page=1&limit=10', config)
         return data.items
     } catch (error) {
         console.log(error)
@@ -65,8 +65,8 @@ export const getApplicationDetails = createAsyncThunk("user/getUserDetails", asy
             }
         }
 
-        const {data} =  await axios.get('api/v1/user/profile', config)
-        return data;
+        // const {data} =  await axios.get(`api/v1/job-application/${id}`, config)
+        // return data;
     } catch (error) {
         console.log(error)
     }
